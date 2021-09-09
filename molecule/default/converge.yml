@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_user: root
+  tasks:
+    - name: "Include ansible-role-ansible"
+      include_role:
+        name: "ansible-role-ansible"

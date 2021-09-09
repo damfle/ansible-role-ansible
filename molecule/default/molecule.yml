@@ -1,0 +1,12 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: docker-rockylinux
+    image: rockylinux/rockylinux:8.4
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

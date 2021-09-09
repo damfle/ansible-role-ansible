@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  tasks:
+    - name: lint
+      shell: ansible-lint ../
+    - name: create instances
+      shell: molecule create
+      args:
+        chdir: ../
+    - name: converge instances
+      shell: molecule converge
+      args:
+        chdir: ../
+    - name: verify instances
+      shell: molecule verify
+      args:
+        chdir: ../
+    - name: destroy instances
+      shell: molecule destroy
+      args:
+        chdir: ../

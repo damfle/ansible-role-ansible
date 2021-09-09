@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Damien FLETY
+  description: Configure ansible on my hosts
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+    - name: CentOS
+      versions:
+        - all
+    - name: RockyLinux
+      versions:
+        - all
+  galaxy_tags: ['ansible', 'facts']
+dependencies: []

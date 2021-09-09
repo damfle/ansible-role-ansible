@@ -1,0 +1,24 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: check if cache exist
+    stat:
+      path: /var/cache/ansible
+    register: ansible_cache_exist
+    changed_when: false
+  - name: assert that cache exist
+    assert:
+      that: ansible_cache_exist.stat.exists
+  - name: check if factsd exist
+    stat:
+      path: /etc/ansible/facts.d
+    register: ansible_factsd_exist
+    changed_when: false
+  - name: assert that factsd exist
+    assert:
+      that: ansible_factsd_exist.stat.exists
+
