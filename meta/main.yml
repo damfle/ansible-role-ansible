@@ -7,10 +7,10 @@ galaxy_info:
     - name: ArchLinux
       versions:
         - all
-    - name: CentOS
+    - name: RockyLinux
       versions:
         - all
-    - name: RockyLinux
+    - name: Debian
       versions:
         - all
   galaxy_tags: ['ansible', 'facts']

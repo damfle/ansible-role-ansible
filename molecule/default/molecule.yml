@@ -4,8 +4,12 @@ dependency:
 driver:
   name: docker
 platforms:
+  - name: docker-archlinux
+    image: damfle/archlinux-ansible:latest
   - name: docker-rockylinux
-    image: rockylinux/rockylinux:8.4
+    image: rockylinux/rockylinux:latest
+  - name: docker-debian
+    image: damfle/debian-ansible:latest
 provisioner:
   name: ansible
 verifier:
