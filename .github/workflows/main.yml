@@ -6,8 +6,6 @@ jobs:
     name: lint, test and tag
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: "${{ github.repository }}"
       - uses: gofrolist/molecule-action@v2
       - name: bump version and push tag
         uses: mathieudutour/github-tag-action@v5.6

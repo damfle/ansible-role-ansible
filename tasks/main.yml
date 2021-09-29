@@ -24,7 +24,8 @@
 
 - name: ensure Ansible dependencies are installed (DEBIAN)  # noqa package-latest
   package:
-    name: ['python3', 'python3-pip', 'unzip', 'tar', 'curl']
+    name: ['python3', 'python3-pip', 'tar', 'zip', 'curl']
+    update_cache: yes
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 
