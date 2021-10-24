@@ -1,2 +1,4 @@
 ---
 # defaults file for ansible-role-ansible
+fact_path: /etc/ansible/facts.d
+ansible_cache_path: /var/cache/ansible
