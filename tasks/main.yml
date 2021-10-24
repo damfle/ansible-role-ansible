@@ -1,6 +1,6 @@
 ---
 # tasks file for ansible-role-ansible
-- name: ensure Ansible dependencies are installed (RHEL)  # noqa package-latest
+- name: ensure Ansible dependencies are installed (RHEL/Debian)  # noqa package-latest
   package:
     name: ['python3', 'python3-pip', 'unzip', 'tar', 'curl']
     state: latest
@@ -24,20 +24,19 @@
 
 - name: ensure Ansible dependencies are installed (DEBIAN)  # noqa package-latest
   package:
-    name: ['python3', 'python3-pip', 'tar', 'zip', 'curl']
-    update_cache: yes
+    name: ['python3', 'python3-pip', 'zip', 'tar', 'curl']
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 
 - name: check if cache exist
   stat:
-    path: /var/cache/ansible
+    path: "{{ ansible_cache_path }}"
   register: _ansible_cache_exist
   changed_when: false
 
 - name: create Ansible cache directory
   file:
-    name: /var/cache/ansible
+    name: "{{ ansible_cache_path }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -47,13 +46,13 @@
 
 - name: check if facts.d exist
   stat:
-    path: /etc/ansible/facts.d
+    path: "{{ fact_path }}"
   register: _ansible_factsd_exist
   changed_when: false
 
-- name: create Ansible /etc/ansible/facts.d directory
+- name: create Ansible facts.d directory
   file:
-    name: /etc/ansible/facts.d
+    name: "{{ fact_path }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -63,4 +62,8 @@
 
 - name: define fact_path fact
   set_fact:
-    fact_path: /etc/ansible/facts.d
+    fact_path: "{{ fact_path }}"
+
+- name: define ansible_cache_path fact
+  set_fact:
+    fact_path: "{{ ansible_cache_path }}"
